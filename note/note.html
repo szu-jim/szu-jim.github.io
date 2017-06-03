@@ -143,6 +143,7 @@ Vue.component('show',{
 		editNote:function(index){
 			if (this.moreishide[index-1].isNoEdit) {
 				this.moreishide[index-1].isNoEdit = false;
+				this.moreishide[index-1].isHide = true;
 			}else if (this.moreishide[index-1].isNoEdit == false) {
 				this.moreishide[index-1].isNoEdit = true;
 			}
@@ -150,6 +151,7 @@ Vue.component('show',{
 		moreNote:function(index){
 			if (this.moreishide[index-1].isHide) {
 				this.moreishide[index-1].isHide = false;
+				this.moreishide[index-1].isNoEdit = true;
 				this.moreishide[index-1].moreName = '收起';
 			}else if (this.moreishide[index-1].isHide == false) {
 				this.moreishide[index-1].isHide = true;
