@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		[v-cloak]{display : none;}
+		table{table-layout:fixed}
+		.ellipsis{
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		#m-title{text-align: center;font-size: 20px;color: #0099CC;background: #DDDDDD;padding-top: 15px;}
+		#m-content{padding:15px 30px;background: #DDDDDD;color: #FF6666}
+		.edit{background: #DDDDDD;}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div id="note">				
+				<show :notes='notes' :moreishide='moreishide'></show>
+				<write :notes='notes' :moreishide='moreishide'></write>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<template id="write-note">	
+	<div>
+		<legend>写笔记</legend>	
+		<form class="form-group">
+			<label>标题</label>
+			<input type="text" class="form-control" v-model="newNote.title">
+			<label>内容</label>
+			<textarea class="form-control" rows="10" v-model="newNote.content"></textarea>
+		</form>
+		<button class="btn btn-primary btn-block" v-on:click="addNote">提交</button>
+	</div>
+</template>
+
+<template id="show-note">
+	<div>
+		<legend>我的笔记</legend>
+		<table class="table table-responsive table-condensed">
+			<thead>
+				<tr class="row">
+					<th class="col-md-1">序号</th>
+					<th class="col-md-2">标题</th>
+					<th class="col-md-4">内容</th>
+					<th class='col-md-3'>操作</th>
+					<th class='col-md-2'>日期</th>
+				</tr>
+			</thead>
+			<tbody v-cloak v-for="note in notes">
+				<tr class="row">
+					<td class="col-md-1">
+						{{note.id}}
+					</td>
+					<td class="col-md-2 ellipsis">
+						{{note.title}}
+					</td>
+					<td class="col-md-4 ellipsis">
+						{{note.content}}
+					</td>						
+					<td class='col-md-3'>
+						<button class="btn btn-primary btn-xs" v-on:click="moreNote(note.id)">{{moreishide[note.id-1].moreName}}</button>
+						<button class="btn btn-primary btn-xs" v-on:click="editNote(note.id)">编辑</button>
+						<button class="btn btn-danger btn-xs" v-on:click="delNote(note.id)">删除</button>
+					</td>
+					<td class="col-md-2">
+						{{note.date}}
+					</td>
+				</tr>
+				<tr :class="{hide: moreishide[note.id-1].isHide}">
+					<td colspan="6" id="m-title" class="container">
+						<strong>{{note.title}}</strong>
+					</td>					
+				</tr>
+				<tr :class="{hide: moreishide[note.id-1].isHide}">
+					<td colspan="6" id="m-content" class="container">
+						{{note.content}}
+					</td>
+				</tr>
+				<tr :class="{hide: moreishide[note.id-1].isNoEdit}">
+					<td colspan="6" class="container edit">
+						<label>标题</label>
+						<input type="text" class="form-control" v-model="note.title">
+					</td>					
+				</tr>
+				<tr :class="{hide: moreishide[note.id-1].isNoEdit}">
+					<td colspan="6" class="container edit">
+						<label>内容</label>
+						<textarea class="form-control" rows="10" v-model="note.content"></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</template>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+Vue.component('write',{
+	props:['notes','moreishide'],
+	template:'#write-note',
+	data:function(){
+		return {newNote:{id:0,title:'',content:'',date:''}}
+	},
+	methods:{
+		addNote:function(){
+			if (!this.newNote.title) {
+				alert('标题不能为空');
+			}else if (!this.newNote.content) {
+				alert('内容不能为空');
+			}else{
+				var now = new Date();
+				this.newNote.id = this.notes.length+1;
+				this.newNote.date = now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
+				this.notes.push(this.newNote);
+				this.moreishide.push({moreName:'展开',isHide:true,isNoEdit:true});
+				this.newNote = {id:0,title:'',content:'',date:''};
+			}
+		}
+	},
+})
+
+Vue.component('show',{
+	props:['notes','moreishide'],
+	template:'#show-note',
+	methods:{
+		delNote:function(index){			
+			for (var i = index, len = this.notes.length; i < len; i++){
+				this.notes[i].id -= 1; 
+			}
+			this.notes.splice(index-1,1);
+			this.moreishide.splice(index-1,1);
+		},
+		editNote:function(index){
+			if (this.moreishide[index-1].isNoEdit) {
+				this.moreishide[index-1].isNoEdit = false;
+			}else if (this.moreishide[index-1].isNoEdit == false) {
+				this.moreishide[index-1].isNoEdit = true;
+			}
+		},
+		moreNote:function(index){
+			if (this.moreishide[index-1].isHide) {
+				this.moreishide[index-1].isHide = false;
+				this.moreishide[index-1].moreName = '收起';
+			}else if (this.moreishide[index-1].isHide == false) {
+				this.moreishide[index-1].isHide = true;
+				this.moreishide[index-1].moreName = '展开';
+			}
+		}
+	}
+})
+
+var vm = new Vue({
+	el:'#note',	
+	data:{
+		notes:JSON.parse(localStorage.getItem('notes')) || [{
+			id:1,
+			title:'样本',
+			content:'Vue.js（读音 /vjuː/，类似于 view） 是一套构建用户界面的渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。',
+			date:'2017年6月1日'
+		}],
+		moreishide:JSON.parse(localStorage.getItem('moreishide')) || [{
+			moreName:'展开',
+			isHide:true,
+			isNoEdit:true
+		}]
+	}
+	
+})
+</script>
+<script type="text/javascript">
+	window.onbeforeunload = function(){
+		localStorage.setItem('notes',JSON.stringify(vm.notes));
+		localStorage.setItem('moreishide',JSON.stringify(vm.moreishide));
+	}
+</script>
+</body>
+</html>
