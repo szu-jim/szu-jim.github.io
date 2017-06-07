@@ -6,7 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>简历</title>
 <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/resume.css" rel="stylesheet">
+<!--<link href="css/resume.css" rel="stylesheet">-->
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">
+<style type="text/css">
+    .center{margin: 0 auto}
+    .brief{width: 400px;}
+    img{float: left;}
+    .brief-right{float: left;height: 180px;line-height: 180px}
+    .brief-bottom{}
+    .name{margin-left: 30px;font-weight: bold;font-size: 75px;}
+    .brief{padding-top: 25px;vertical-align: middle;font-size: 20px}
+    .l{font-weight: bold;font-size: 30px}
+</style>
 
 <!--[if lt IE 9]>
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -14,24 +25,70 @@
     <![endif]-->
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand">叶锦俊</a> 
+    </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#page1">简介 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#page2">个人技能</a></li>
+        <li><a href="#page3">项目经历</a></li>
+        <li><a href="#page4">总结</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
 
-<div class="container">
-    <div class="container top">
-        <div class="row">
-            <div class="col-md-3"><img src="img/pic.jpg"></div>
-            <div class="col-md-9">
-            	<h1>叶锦俊</h1>
-                <br>
-                <p><strong>学校：</strong>深圳大学</p>
-                <p><strong>电话：</strong>13809611566</p>
-                <p><strong>邮箱：</strong>13809611566@163.com</p>
+<div id="dowebok">
+    <div class="section">
+        <div class="brief center">        
+            <img src="img/pic.jpg">
+            <div class="brief-right">
+        	    <div class="name">叶锦俊</div>               
+            </div>
+            <div class="clearfix"></div>
+            <div class="brief-bottom">
+                <div class="brief"><span class="l">学校：</span >深圳大学</div>
+                <div class="brief"><span class="l">电话：</span >13809611566</div>
+                <div class="brief"><span class="l">邮箱：</span >13809611566@163.com</div>
+                <div class="brief"><span class="l">爱好：</span >篮球、音乐、电影</div>
             </div>
         </div>
     </div>
-    <div class="row bottom">
-    	<div class="col-md-3"></div>
-        <div class="col-md-9"></div>
+    <div class="section">
+    	
+    </div>
+    <div class="section">
+        
+    </div>
+    <div class="section">
+        
     </div>
 </div>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('#dowebok').fullpage({
+        sectionsColor: ['#4BBFC3', '#1bbc9b', '#7BAABE', '#f90'],
+        navigation: true,
+        navigationPosition: 'right',
+        navigationTooltips: ['简介','个人技能','项目经历','总结'],
+        anchors: ['page1','page2','page3','page4']
+    });
+
+    //if ($('#fp-nav a').hasClass('active')){}
+});
+
+</script>
+
 </body>
 </html>
