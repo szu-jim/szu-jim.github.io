@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>博客</title>
 <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/index.css" rel="stylesheet">
+<link href="css/jspage.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -43,23 +43,24 @@
 </nav>
 
 <div class="container">
-    <div id="test">
-    	<p>{{message}}</p>
+    <div class="col-md-8">
+      <div class="essay">
         
-   		<textarea v-model="message"></textarea>
+      </div>
+    </div>
+    <div class="col-md-4 side">
+      <ul>
+        <li><a href="#" class="sideLi">HTML/CSS</a></li>
+        <li><a href="#" class="sideLi">JavaScript</a></li>
+        <li><a href="#" class="sideLi">HTTP/TCP/IP</a></li>
+      </ul>
     </div>
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> 
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="js/vue.js"></script>
-<script>
-var app=new Vue({
-	el:'#test',
-	data:{
-		message:""		
-	}
-})
+<script type="text/javascript">
+  
 </script>
 </body>
 </html>
