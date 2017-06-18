@@ -12,27 +12,33 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $rePassword;
+    public $verifyCode;
+
 
 
     /**
-     * @inheritdoc
+     * @inheritdoc对应属性验证规则
      */
     public function rules()
     {
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => /*Yii::t('common', 'This username has already been taken.')*/'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => /*Yii::t('common','This email address has already been taken.')*/'This email address has already been taken.'],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            [['password','rePassword'], 'required'],
+            [['password','rePassword'], 'string', 'min' => 6],
+            ['rePassword','compare','compareAttribute' => 'password','message' => /*Yii::t('common','Password not consitent.')*/'Password not consitent.'],
+
+            ['verifyCode','captcha']
         ];
     }
 
@@ -42,6 +48,8 @@ class SignupForm extends Model
             'username' => '用户名',
             'email' => '邮箱',
             'password' => '密码',
+            'rePassword' => '重复密码',
+            'verifyCode' => '验证码'
         ];
     }
 

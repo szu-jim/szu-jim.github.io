@@ -118,3 +118,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.navbar-right > li > a.avatar{
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+.navbar-right > li > a.avatar img{
+    border: 1px solid #ccc;
+    width: 32px;
+    height: 32px;
+}

@@ -35,27 +35,41 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
+    $leftMenus = [
         ['label' => Yii::t('common','Home'), 'url' => ['/site/index']],
-        ['label' => Yii::t('common','About'), 'url' => ['/site/about']],
-        ['label' => Yii::t('common','Contact'), 'url' => ['/site/contact']],
+        ['label' => Yii::t('common','Article'), 'url' => ['/site/article']],
+        ['label' => Yii::t('common','Works'), 'url' => ['/site/works']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => Yii::t('common','Signup'), 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => Yii::t('common','Login'), 'url' => ['/site/login']];
+        $rightMenus[] = ['label' => Yii::t('common','Signup'), 'url' => ['/site/signup']];
+        $rightMenus[] = ['label' => Yii::t('common','Login'), 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
+        $rightMenus[] = [
+            'label' => '<img src = "'.Yii::$app->params['avatar']['small'].'" alt = "'.Yii::$app->user->identity->username.'">',
+            'linkOptions' => ['class' => 'avatar'],
+            'items' => [
+                ['label' => '<i class="fa fa-sign-out"></i> 退出', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']], 
+            ]
+            //'linkOptions' => ['data-method' => 'post']
+        ];
+
+        /*'<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
                 Yii::t('common','Logout').'(' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
-            . '</li>';
+            . '</li>';*/
     }
     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => $leftMenus,
+    ]);
+    echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'encodeLabels' => false,
+        'items' => $rightMenus,
     ]);
     NavBar::end();
     ?>
