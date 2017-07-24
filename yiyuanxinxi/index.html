@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{padding:0;margin:0;}
+ul{list-style:none}
+table{border-collapse:collapse;}
+a{text-decoration:none;}
+.clearfix{*zoom:1}
+.clearfix:after{content:"";display:block;height:0;visibility:hidden;clear:both}
+li:hover{cursor:pointer}
+.color_wwb{background: -webkit-linear-gradient(#FFF,#FFF,RGB(168,219,247)); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(#FFF,#FFF,RGB(168,219,247)); /* Opera 11.1 - 12.0 */
+ 			background: -moz-linear-gradient(#FFF,#FFF,RGB(168,219,247)); /* Firefox 3.6 - 15 */
+			background: linear-gradient(#FFF,#FFF,RGB(168,219,247)); /* 标准的语法 */}
+.color_bw{background: -webkit-linear-gradient(RGB(168,219,247),#FFF); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(RGB(168,219,247),#FFF); /* Opera 11.1 - 12.0 */
+ 			background: -moz-linear-gradient(RGB(168,219,247),#FFF); /* Firefox 3.6 - 15 */
+			background: linear-gradient(RGB(168,219,247),#FFF); /* 标准的语法 */}
+.color_wbw{background: -webkit-linear-gradient(#FFF,RGB(168,219,247),#FFF); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(#FFF,RGB(168,219,247),#FFF); /* Opera 11.1 - 12.0 */
+ 			background: -moz-linear-gradient(#FFF,RGB(168,219,247),#FFF); /* Firefox 3.6 - 15 */
+			background: linear-gradient(#FFF,RGB(168,219,247),#FFF); /* 标准的语法 */}
+.color_wb{background: -webkit-linear-gradient(#FFF,RGB(168,219,247)); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(#FFF,RGB(168,219,247)); /* Opera 11.1 - 12.0 */
+ 			background: -moz-linear-gradient(#FFF,RGB(168,219,247)); /* Firefox 3.6 - 15 */
+			background: linear-gradient(#FFF,RGB(168,219,247)); /* 标准的语法 */}
+.left{width:20%;height:930px;float:left;}
+.left_top{border:1px solid #000;margin-bottom:1px}
+.left_top h3{border:1px solid #000;margin:1px;text-align:center;padding:5px;color:#06F}
+.left_top .message{background-color:RGB(195,231,245);margin:2px;padding:20px}
+.left_bottom{border:1px solid #0CF;border-radius:20px;height:830px;}
+.left_bottom p{border-bottom:1px solid #0CF;text-align:center;padding:20px 10px;
+border-radius:20px 20px 0 0}
+.left_bottom .left_list{margin:2px 5px;border-top:1px solid #000;background-color:RGB(195,231,245);
+border-bottom-right-radius:20px;border-bottom-left-radius:20px;height:760px;}
+.left_bottom .list_tittle{color:#FFF;padding:5px;text-indent:20px}
+.outer_ul{padding-bottom:20px;}
+.outer_ul>li a{display:block;background-color:RGB(187,229,247);margin-left:20px;
+border-bottom:1px solid #FFF;height:40px;text-align:center;text-indent:-20px;line-height:40px;color:#06F;font-size:15px;font-family:STHupo YouYuan}
+.outer_ul ul li{display:block;background-color:#FFF;margin-left:20px;height:30px;line-height:30px;
+font-size:15px;font-family:STHupo YouYuan;border-right:2px solid RGB(187,229,247);text-align:center;text-indent:-20px;}
+.sec:after{content:"";height:1px;display:block;margin-top:2px;margin-left:20px;background:#FFF;}
+
+.right{width:80%;float:left;}
+.right_top{text-align:center;font-size:15px;line-height:40px;height:40px;border-bottom:1px solid #666}
+.right_catalog{font-size:12px;line-height:30px;height:30px;border-bottom:1px solid #0CF;text-indent:50px;
+color:RGB(67,113,144)}
+.right_list{background:RGB(220,233,239)}
+.right_list li{float:left;display:inline-block;padding:8px 30px;background-color:RGB(195,231,245);
+margin:5px 0 0 10px;border-radius:10px 10px 0 0;}
+table{width:100%;}
+tr{height:40px;line-height:40px;}
+tr:nth-child(odd){background-color:RGB(246,251,254)}
+table,table tr th, table tr td { border:1px solid RGB(178,214,240); }
+
+.hide{display:none;}
+</style>
+</head>
+
+<body>
+<div class="left">
+	<div class="left_top">
+    	<h3 class="color_wwb">个人信息</h3>
+        <div class="message">
+        	<span>当前用户:</span>
+        </div>
+    </div>
+    <div class="left_bottom">
+    	<p class="color_bw">菜单列表</p>
+        <div class="left_list">
+        	<div class="list_tittle">医院信息管理</div>
+            <ul id="left_list" class="outer_ul">
+            	<li><a class="color_wb">基本信息</a></li>
+                <li><a>过往病例</a></li>
+                <li><a>医生建议</a></li>
+                <li class="sec"><a>所属科室</a>
+                	<ul id="keshi_list" class="hide">
+                	<li>内科</li>
+                    <li>牙科</li>
+                    <li>外科</li>
+                    <li>眼科</li>
+                	</ul>
+                </li>
+                <li class="sec"><a>统计报表</a>
+                	<ul id="baobiao_list" class="hide">
+                	<li>2017年</li>
+                    <li>2016年</li>
+                    <li>2015年</li>
+                	</ul>
+                </li>
+                <li class="sec"><a>上传信息</a>
+                	<ul id="xinxi_list" class="hide">
+                	<li>新建档案</li>
+                    <li>修改档案</li>
+                	</ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="right">
+	<div class="right_top color_wb">欢迎使用医院信息管理系统</div>
+    <div class="right_catalog color_wb">当前目录:</div>
+    <div class="right_list clearfix">
+    	<ul>
+            	<li class="color_wb">基本信息</li>
+                <li>过往病例</li>
+                <li>医生建议</li>
+                <li>所属科室</li>                
+                <li>统计报表</li>
+                <li>上传信息</li>
+     	</ul>
+    </div>
+    <table>
+  <tr class="color_wbw">
+ 	<th scope="col" width="3%"></th>
+    <th scope="col">档案编号</th>
+    <th scope="col" width="10%">姓名</th>
+    <th scope="col">建档日期</th>
+    <th scope="col">建档状态</th>
+    <th scope="col" width="10%">主治医师</th>
+    <th scope="col" width="25%">操作</th>
+  </tr>
+  <tr>
+    <th scope="row">1</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">3</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">4</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">5</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">6</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">7</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">8</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">9</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">10</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">11</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">12</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">13</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">14</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">15</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

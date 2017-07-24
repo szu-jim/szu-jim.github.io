@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+					/**
+                     * 设置背景图全屏覆盖及固定
+                     * 设置内部元素偏移
+                     */
+                    body {
+                        /*此处背景图自行替换*/
+                        background: url(img/t.jpg) no-repeat center center fixed;
+                        background-size: cover;
+                         min-height: 100vh;
+                        box-sizing: border-box;
+                        margin: 0;
+                        padding-top: calc(50vh - 6em);
+                        font: 150%/1.6 Baskerville, Palatino, serif;
+                    }
+
+                    /**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+                    .description{
+                        position: relative;
+                        margin: 0 auto;
+                        padding: 1em;
+                        max-width: 23em;
+                        background: hsla(0,0%,100%,.25) border-box;
+                        overflow: hidden;
+                        border-radius: .3em;
+                        box-shadow: 0 0 0 1px hsla(0,0%,100%,.3) inset,
+                                    0 .5em 1em rgba(0, 0, 0, 0.6);
+                        text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+                    }
+
+                    /*使用滤镜模糊边缘*/
+                    .description::before{
+                        content: '';
+                        position: absolute;
+                        top: 0; right: 0; bottom: 0; left: 0;
+                        margin: -30px;
+                        z-index: -1;
+                        -webkit-filter: blur(20px);
+                        filter: blur(20px);
+                    }
+</style>
+
+</head>
+
+<body>
+  <p class="description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+</body>
+</html>
