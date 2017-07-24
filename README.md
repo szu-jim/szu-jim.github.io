@@ -6,6 +6,8 @@
 
 ```
 clock      时钟动画效果
+
 note       基于vue.js的笔记组件
+
 resume     简历
 ```

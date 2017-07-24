@@ -10,11 +10,7 @@
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery.fullPage.min.js"></script>
 <script>
-$(function(){
-	$('#dowebok').fullpage({
-		sectionsColor: ['#4BBFC3', '#1bbc9b', '#7BAABE', '#f90']
-	});
-});
+
 </script>
 </head>
 
@@ -27,18 +23,12 @@ $(function(){
 	</div>
 	<div class="section">
 		<h3>第二屏的第一屏</h3>
-		<div><h3>第二屏的第二屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div><div><h3>第二屏的第三屏</h3></div>
-		<div><h3>第二屏的第三屏</h3></div>
+	</div>
+	<div class="section">
+		<h3>第二屏的第一屏</h3>
+	</div>
+	<div class="section">
+		<h3>第二屏的第一屏</h3>
 	</div>
 </div>
 
@@ -55,5 +45,29 @@ $(function(){
 <a href="http://www.dowebok.com/" style="display: none;">dowebok</a>
 <a href="http://www.dowebok.com/77.html" style="display: none;">jQuery全屏滚动插件fullPage.js</a>
 
+
+<script type="text/javascript">
+$(function(){
+	$('#dowebok').fullpage({
+		sectionsColor: ['#4BBFC3', '#1bbc9b', '#7BAABE', '#f90'],
+		'navigation': true,
+	});
+
+	$(window).resize(function(){
+        autoScrolling();
+    });
+
+    function autoScrolling(){
+        var $ww = $(window).width();
+        if($ww < 1024){
+            $.fn.fullpage.setAutoScrolling(false);
+        } else {
+            $.fn.fullpage.setAutoScrolling(true);
+        }
+    }
+
+    autoScrolling();
+});    
+</script>
 </body>
 </html>
